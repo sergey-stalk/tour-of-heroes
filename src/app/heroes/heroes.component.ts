@@ -9,28 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-
-  hero: Hero = {
-    id:1,
-    name:'Windstorm'
-  };
-
-  public heroes: Hero[];
-
-  selectedHero: Hero;
-  public onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
+  heroes: Hero[];
 
   constructor(private heroService: HeroService) { }
-
-  private getHeroes(): void {
-   this.heroService.getHeroes()
-    .subscribe(heroes => this.heroes = heroes);
-  }
 
   ngOnInit() {
     this.getHeroes();
   }
 
+  public getHeroes(): void {
+    this.heroService.getHeroes()
+    .subscribe(heroes => this.heroes = heroes);
+  }
 }
